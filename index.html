@@ -32,7 +32,7 @@
   </ol>
 </nav>
 <section class="pt-16 text-center " x-data="{ hidden: true }">
-        <button class="text-purple-500 px-3 py-1  "   @click="hidden = !hidden"><i class='fa fa-hand-peace-o fa-2x'></i>
+        <button class="text-purple-500 px-3 py-1" onclick="confiti()"  @click="hidden = !hidden"><i class='fa fa-hand-peace-o fa-2x'></i>
             <span class="text-sm font-semibold" x-text="hidden ? 'About Me' : 'Maybe ;)'">About Me</span>
         </button>   
     <div class="bg-white" :class="{ 'hidden': hidden }">
@@ -56,7 +56,10 @@
                       }
                     import Alpine from 'https://cdn.skypack.dev/alpinejs'
 import confetti from 'https://cdn.skypack.dev/canvas-confetti'
-// confetti();</script>
+window.confiti = function() {
+confetti();
+}
+</script>
 			</div>
 			<div class="primo-component" id="component-onutk">
 				<div id="component-onutk" class="w-full"><div class="container border-2 flex-col">
