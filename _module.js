@@ -3833,7 +3833,7 @@ function get_each_context_2(ctx, list, i) {
 	return child_ctx;
 }
 
-// (171:4) {#each galleries as type, i }
+// (183:4) {#each galleries as type, i }
 function create_each_block_2(ctx) {
 	let button;
 	let t0_value = /*type*/ ctx[17].name + "";
@@ -3862,7 +3862,7 @@ function create_each_block_2(ctx) {
 			this.h();
 		},
 		h() {
-			attr(button, "class", "svelte-1pocubd");
+			attr(button, "class", "svelte-41n0hy");
 			toggle_class(button, "active", /*active_gallery*/ ctx[2] === /*i*/ ctx[19]);
 		},
 		m(target, anchor) {
@@ -3891,7 +3891,7 @@ function create_each_block_2(ctx) {
 	};
 }
 
-// (178:4) {#each galleries as type, i}
+// (190:4) {#each galleries as type, i}
 function create_each_block_1(ctx) {
 	let option;
 	let t_value = /*type*/ ctx[17].name + "";
@@ -3928,7 +3928,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (191:6) {#if link}
+// (203:6) {#if link}
 function create_if_block_1$1(ctx) {
 	let a;
 	let t_value = /*link*/ ctx[14].label + "";
@@ -3942,7 +3942,7 @@ function create_if_block_1$1(ctx) {
 			this.h();
 		},
 		l(nodes) {
-			a = claim_element(nodes, "A", { href: true });
+			a = claim_element(nodes, "A", { href: true, class: true });
 			var a_nodes = children(a);
 			t = claim_text(a_nodes, t_value);
 			a_nodes.forEach(detach);
@@ -3950,6 +3950,7 @@ function create_if_block_1$1(ctx) {
 		},
 		h() {
 			attr(a, "href", a_href_value = /*link*/ ctx[14].url);
+			attr(a, "class", "svelte-41n0hy");
 		},
 		m(target, anchor) {
 			insert_hydration(target, a, anchor);
@@ -3968,7 +3969,7 @@ function create_if_block_1$1(ctx) {
 	};
 }
 
-// (184:4) {#each galleries[active_gallery].items as { title, desc, image, link }}
+// (196:4) {#each galleries[active_gallery].items as { title, desc, image, link }}
 function create_each_block$2(ctx) {
 	let figure;
 	let ul;
@@ -4037,12 +4038,12 @@ function create_each_block$2(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h3, "class", "title svelte-1pocubd");
-			attr(div0, "class", "links");
+			attr(h3, "class", "title svelte-41n0hy");
+			attr(div0, "class", "links svelte-41n0hy");
 			if (!src_url_equal(img.src, img_src_value = /*image*/ ctx[13].url)) attr(img, "src", img_src_value);
-			attr(img, "class", "svelte-1pocubd");
-			attr(ul, "class", "itms svelte-1pocubd");
-			attr(figure, "class", "svelte-1pocubd");
+			attr(img, "class", "svelte-41n0hy");
+			attr(ul, "class", "itms svelte-41n0hy");
+			attr(figure, "class", "svelte-41n0hy");
 		},
 		m(target, anchor) {
 			insert_hydration(target, figure, anchor);
@@ -4097,7 +4098,7 @@ function create_each_block$2(ctx) {
 	};
 }
 
-// (183:4) {#key active_gallery}
+// (195:4) {#key active_gallery}
 function create_key_block(ctx) {
 	let each_1_anchor;
 	let each_value = /*galleries*/ ctx[0][/*active_gallery*/ ctx[2]].items;
@@ -4170,7 +4171,7 @@ function create_key_block(ctx) {
 	};
 }
 
-// (202:2) {#if active_image}
+// (214:2) {#if active_image}
 function create_if_block$1(ctx) {
 	let div;
 	let figure;
@@ -4238,12 +4239,12 @@ function create_if_block$1(ctx) {
 			attr(svg, "viewBox", "0 0 36 39");
 			attr(svg, "fill", "none");
 			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
-			attr(button, "class", "svelte-1pocubd");
+			attr(button, "class", "svelte-41n0hy");
 			if (!src_url_equal(img.src, img_src_value = /*active_image*/ ctx[3].url)) attr(img, "src", img_src_value);
-			attr(img, "class", "svelte-1pocubd");
-			attr(figure, "class", "svelte-1pocubd");
+			attr(img, "class", "svelte-41n0hy");
+			attr(figure, "class", "svelte-41n0hy");
 			attr(div, "id", "modal");
-			attr(div, "class", "svelte-1pocubd");
+			attr(div, "class", "svelte-41n0hy");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -4400,13 +4401,13 @@ function create_fragment$5(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h3, "class", "heading svelte-1pocubd");
-			attr(div0, "class", "tabs svelte-1pocubd");
-			attr(select, "class", "svelte-1pocubd");
+			attr(h3, "class", "heading svelte-41n0hy");
+			attr(div0, "class", "tabs svelte-41n0hy");
+			attr(select, "class", "svelte-41n0hy");
 			if (/*active_gallery*/ ctx[2] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[10].call(select));
-			attr(div1, "class", "items svelte-1pocubd");
+			attr(div1, "class", "items svelte-41n0hy");
 			attr(div2, "class", "section-container");
-			attr(section, "class", "svelte-1pocubd");
+			attr(section, "class", "svelte-41n0hy");
 			attr(div3, "class", "component");
 			attr(div4, "class", "section");
 			attr(div4, "id", "section-ecc3f8d8-9dda-4a1f-9699-3fc2e63fc2e3");
