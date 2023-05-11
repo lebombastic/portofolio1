@@ -265,6 +265,14 @@ function attr(node, attribute, value) {
     else if (node.getAttribute(attribute) !== value)
         node.setAttribute(attribute, value);
 }
+/**
+ * List of attributes that should always be set through the attr method,
+ * because updating them through the property setter doesn't work reliably.
+ * In the example of `width`/`height`, the problem is that the setter only
+ * accepts numeric values, but the attribute can also be set to a string like `50%`.
+ * If this list becomes too big, rethink this approach.
+ */
+const always_set_through_set_attribute = ['width', 'height'];
 function set_attributes(node, attributes) {
     // @ts-ignore
     const descriptors = Object.getOwnPropertyDescriptors(node.__proto__);
@@ -278,7 +286,7 @@ function set_attributes(node, attributes) {
         else if (key === '__value') {
             node.value = node[key] = attributes[key];
         }
-        else if (descriptors[key] && descriptors[key].set) {
+        else if (descriptors[key] && descriptors[key].set && always_set_through_set_attribute.indexOf(key) === -1) {
             node[key] = attributes[key];
         }
         else {
@@ -3096,10 +3104,10 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span, "class", "svelte-1osa68j");
+			attr(span, "class", "svelte-1bubp04");
 			attr(a, "href", a_href_value = /*link*/ ctx[8].url);
-			attr(a, "class", "svelte-1osa68j");
-			attr(li, "class", "svelte-1osa68j");
+			attr(a, "class", "svelte-1bubp04");
+			attr(li, "class", "svelte-1bubp04");
 		},
 		m(target, anchor) {
 			insert_hydration(target, li, anchor);
@@ -3255,31 +3263,31 @@ function create_fragment$2(ctx) {
 		h() {
 			if (!src_url_equal(img.src, img_src_value = /*portrait*/ ctx[2].image.url)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*portrait*/ ctx[2].image.alt);
-			attr(img, "class", "svelte-1osa68j");
+			attr(img, "class", "svelte-1bubp04");
 			attr(circle0, "cx", "131");
 			attr(circle0, "cy", "113");
 			attr(circle0, "r", "113");
-			attr(circle0, "class", "svelte-1osa68j");
+			attr(circle0, "class", "svelte-1bubp04");
 			attr(circle1, "cx", "131");
 			attr(circle1, "cy", "113");
 			attr(circle1, "r", "113");
-			attr(circle1, "class", "svelte-1osa68j");
+			attr(circle1, "class", "svelte-1bubp04");
 			attr(circle2, "cx", "131");
 			attr(circle2, "cy", "113");
 			attr(circle2, "r", "113");
-			attr(circle2, "class", "svelte-1osa68j");
+			attr(circle2, "class", "svelte-1bubp04");
 			attr(svg, "height", "226");
 			attr(svg, "width", "226");
-			attr(svg, "class", "svelte-1osa68j");
+			attr(svg, "class", "svelte-1bubp04");
 			toggle_class(svg, "show", /*imageLoaded*/ ctx[3]);
-			attr(figure, "class", "svelte-1osa68j");
+			attr(figure, "class", "svelte-1bubp04");
 			toggle_class(figure, "square", /*portrait*/ ctx[2].variation === "square");
-			attr(h1, "class", "heading svelte-1osa68j");
-			attr(div0, "class", "description svelte-1osa68j");
-			attr(ul, "class", "social svelte-1osa68j");
-			attr(div1, "class", "svelte-1osa68j");
-			attr(div2, "class", "section-container svelte-1osa68j");
-			attr(header, "class", "svelte-1osa68j");
+			attr(h1, "class", "heading svelte-1bubp04");
+			attr(div0, "class", "description svelte-1bubp04");
+			attr(ul, "class", "social svelte-1bubp04");
+			attr(div1, "class", "svelte-1bubp04");
+			attr(div2, "class", "section-container svelte-1bubp04");
+			attr(header, "class", "svelte-1bubp04");
 			attr(div3, "class", "component");
 			attr(div4, "class", "section");
 			attr(div4, "id", "section-b892a4d3-8a95-446d-89f2-e3432235a424");
@@ -3833,7 +3841,7 @@ function get_each_context_2(ctx, list, i) {
 	return child_ctx;
 }
 
-// (183:4) {#each galleries as type, i }
+// (184:4) {#each galleries as type, i }
 function create_each_block_2(ctx) {
 	let button;
 	let t0_value = /*type*/ ctx[17].name + "";
@@ -3862,7 +3870,7 @@ function create_each_block_2(ctx) {
 			this.h();
 		},
 		h() {
-			attr(button, "class", "svelte-41n0hy");
+			attr(button, "class", "svelte-1x50i84");
 			toggle_class(button, "active", /*active_gallery*/ ctx[2] === /*i*/ ctx[19]);
 		},
 		m(target, anchor) {
@@ -3891,7 +3899,7 @@ function create_each_block_2(ctx) {
 	};
 }
 
-// (190:4) {#each galleries as type, i}
+// (191:4) {#each galleries as type, i}
 function create_each_block_1(ctx) {
 	let option;
 	let t_value = /*type*/ ctx[17].name + "";
@@ -3928,7 +3936,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (203:6) {#if link}
+// (204:6) {#if link}
 function create_if_block_1$1(ctx) {
 	let a;
 	let t_value = /*link*/ ctx[14].label + "";
@@ -3942,15 +3950,15 @@ function create_if_block_1$1(ctx) {
 			this.h();
 		},
 		l(nodes) {
-			a = claim_element(nodes, "A", { href: true, class: true });
+			a = claim_element(nodes, "A", { class: true, href: true });
 			var a_nodes = children(a);
 			t = claim_text(a_nodes, t_value);
 			a_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
+			attr(a, "class", "link svelte-1x50i84");
 			attr(a, "href", a_href_value = /*link*/ ctx[14].url);
-			attr(a, "class", "svelte-41n0hy");
 		},
 		m(target, anchor) {
 			insert_hydration(target, a, anchor);
@@ -3969,7 +3977,7 @@ function create_if_block_1$1(ctx) {
 	};
 }
 
-// (196:4) {#each galleries[active_gallery].items as { title, desc, image, link }}
+// (197:4) {#each galleries[active_gallery].items as { title, desc, image, link }}
 function create_each_block$2(ctx) {
 	let figure;
 	let ul;
@@ -4020,7 +4028,7 @@ function create_each_block$2(ctx) {
 			t0 = claim_text(h3_nodes, t0_value);
 			h3_nodes.forEach(detach);
 			t1 = claim_space(div1_nodes);
-			p = claim_element(div1_nodes, "P", {});
+			p = claim_element(div1_nodes, "P", { class: true });
 			var p_nodes = children(p);
 			t2 = claim_text(p_nodes, t2_value);
 			p_nodes.forEach(detach);
@@ -4038,12 +4046,13 @@ function create_each_block$2(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h3, "class", "title svelte-41n0hy");
-			attr(div0, "class", "links svelte-41n0hy");
+			attr(h3, "class", "title svelte-1x50i84");
+			attr(p, "class", "svelte-1x50i84");
+			attr(div0, "class", "links svelte-1x50i84");
 			if (!src_url_equal(img.src, img_src_value = /*image*/ ctx[13].url)) attr(img, "src", img_src_value);
-			attr(img, "class", "svelte-41n0hy");
-			attr(ul, "class", "itms svelte-41n0hy");
-			attr(figure, "class", "svelte-41n0hy");
+			attr(img, "class", "svelte-1x50i84");
+			attr(ul, "class", "itms svelte-1x50i84");
+			attr(figure, "class", "svelte-1x50i84");
 		},
 		m(target, anchor) {
 			insert_hydration(target, figure, anchor);
@@ -4098,7 +4107,7 @@ function create_each_block$2(ctx) {
 	};
 }
 
-// (195:4) {#key active_gallery}
+// (196:4) {#key active_gallery}
 function create_key_block(ctx) {
 	let each_1_anchor;
 	let each_value = /*galleries*/ ctx[0][/*active_gallery*/ ctx[2]].items;
@@ -4171,7 +4180,7 @@ function create_key_block(ctx) {
 	};
 }
 
-// (214:2) {#if active_image}
+// (215:2) {#if active_image}
 function create_if_block$1(ctx) {
 	let div;
 	let figure;
@@ -4239,12 +4248,12 @@ function create_if_block$1(ctx) {
 			attr(svg, "viewBox", "0 0 36 39");
 			attr(svg, "fill", "none");
 			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
-			attr(button, "class", "svelte-41n0hy");
+			attr(button, "class", "svelte-1x50i84");
 			if (!src_url_equal(img.src, img_src_value = /*active_image*/ ctx[3].url)) attr(img, "src", img_src_value);
-			attr(img, "class", "svelte-41n0hy");
-			attr(figure, "class", "svelte-41n0hy");
+			attr(img, "class", "svelte-1x50i84");
+			attr(figure, "class", "svelte-1x50i84");
 			attr(div, "id", "modal");
-			attr(div, "class", "svelte-41n0hy");
+			attr(div, "class", "svelte-1x50i84");
 		},
 		m(target, anchor) {
 			insert_hydration(target, div, anchor);
@@ -4401,13 +4410,13 @@ function create_fragment$5(ctx) {
 			this.h();
 		},
 		h() {
-			attr(h3, "class", "heading svelte-41n0hy");
-			attr(div0, "class", "tabs svelte-41n0hy");
-			attr(select, "class", "svelte-41n0hy");
+			attr(h3, "class", "heading svelte-1x50i84");
+			attr(div0, "class", "tabs svelte-1x50i84");
+			attr(select, "class", "svelte-1x50i84");
 			if (/*active_gallery*/ ctx[2] === void 0) add_render_callback(() => /*select_change_handler*/ ctx[10].call(select));
-			attr(div1, "class", "items svelte-41n0hy");
+			attr(div1, "class", "items svelte-1x50i84");
 			attr(div2, "class", "section-container");
-			attr(section, "class", "svelte-41n0hy");
+			attr(section, "class", "svelte-1x50i84");
 			attr(div3, "class", "component");
 			attr(div4, "class", "section");
 			attr(div4, "id", "section-ecc3f8d8-9dda-4a1f-9699-3fc2e63fc2e3");
@@ -5712,7 +5721,7 @@ function create_fragment$8(ctx) {
 						"name": "Websites",
 						"items": [
 							{
-								"desc": "Something",
+								"desc": "Saint Andrew's Refugee Services is a non-profit organization that helps refugee based in Egypt - i developed their website from scratch.",
 								"link": {
 									"url": "soethowe",
 									"label": "Hello",
@@ -5724,7 +5733,7 @@ function create_fragment$8(ctx) {
 									"url": "https://picsum.photos/600/400?blur=10",
 									"size": null
 								},
-								"title": "StARS"
+								"title": "Saint Andrew's Refugee Services"
 							},
 							{
 								"image": {
